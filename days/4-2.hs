@@ -7,7 +7,7 @@ import Data.List (group, sort)
 main :: IO ()
 main = do
        s <- getInput 4
-       print $ solution $ parse s
+       print $ head $ parse s
 
 parse :: String -> [[String]]
 parse = map words . lines

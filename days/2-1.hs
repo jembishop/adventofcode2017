@@ -3,7 +3,7 @@ import AocUtils
 main :: IO ()
 main = do
        s <- getInput 2
-       print $ solution $ parse s
+       print $ head $ parse s
 
 parse :: String -> [[Int]]
 parse = map (map read . words) . lines 

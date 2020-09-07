@@ -6,7 +6,7 @@ import Control.Arrow ((&&&))
 main :: IO ()
 main = do
        s <- getInput 3
-       print $ solution $ parse s
+       print $ head $ parse s
 
 parse = read :: (String -> Int)
 
