@@ -1,7 +1,7 @@
-import AocUtils
-import Data.List
-import Debug.Trace
-import Data.Ord
+import AocUtils ( getInput )
+import Data.List ( maximumBy )
+import Debug.Trace ()
+import Data.Ord ( Down(Down), comparing )
 import qualified Data.Set as S
 
 main :: IO ()

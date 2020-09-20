@@ -5,6 +5,7 @@ import Control.Arrow ((&&&))
 import qualified Data.Map as M
 import Data.Maybe (fromMaybe, fromJust)
 import Control.Monad.State
+    ( evalState, MonadState(put, get), State )
 import Control.Monad (mapM)
 import Data.List (find)
 
@@ -13,6 +14,7 @@ main = do
        s <- getInput 3
        print $ solution $ parse s
 
+parse :: String -> Int
 parse = read :: (String -> Int)
 
 ringNum :: Int -> Int
@@ -26,6 +28,7 @@ overflowMove rn d
                  | d  <= 4 * y = (-(y - (d - 3*y )), 0)
 		 where y = 2*rn
 
+coords :: Int -> (Int, Int)
 coords d = let rn = ringNum d 
 	       (x, y) = (rn, -rn)
                ovf = d - (2*rn - 1)^2 
@@ -35,9 +38,11 @@ coords d = let rn = ringNum d
 
 type LookupTable = M.Map (Int, Int) Int
 
+addTup :: (Num a, Num b) => (a, b) -> (a, b) -> (a, b)
 addTup (x, y) (a, b)= (x + a, y + b)
 
 
+perim :: [(Int, Int)]
 perim = [(1, 0),
         (1, 1),
         (0, 1),

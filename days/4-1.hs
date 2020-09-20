@@ -15,4 +15,5 @@ parse = map words . lines
 valid :: [String] -> Bool 
 valid = not . any ((>1) . length) . group . sort  
 
+solution :: [[String]] -> Int
 solution = length . filter valid
