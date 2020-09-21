@@ -1,4 +1,3 @@
-{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 import AocUtils (getInput)
@@ -9,7 +8,6 @@ import qualified Data.Set as S
 import qualified Data.Text as T
 import Control.Applicative ( Alternative((<|>)) )
 import qualified Data.Map as M
-import Debug.Trace
 import Control.Monad.State.Lazy
     ( State, evalState, MonadState(put, get) )
 
@@ -21,8 +19,9 @@ main = do
 
 type Graph = M.Map Int [Int]
 
-fromRight :: Either a b -> b
+fromRight :: Show a => Either a p -> p
 fromRight (Right x) = x
+fromRight (Left x) = error (show x)
 
 parse :: T.Text -> Graph
 parse = M.fromList . map (fromRight . (P.parseOnly par)) . T.lines
