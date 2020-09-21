@@ -9,7 +9,6 @@ import Data.Maybe (catMaybes, fromJust)
 import qualified Data.Set as S
 import Data.Text (Text, pack, singleton, unpack)
 import Data.Text.Read (hexadecimal)
-import Debug.Trace
 import KnotHash (hash)
 import Numeric (readHex)
 import Text.Printf (printf)
@@ -21,7 +20,6 @@ main = do
   s <- fmap pack (getInput 14)
   print $ solution1 $ parse s
   print $ solution2 $ parse s
-  return ()
 
 parse :: Text -> [Text]
 parse = rowHash
